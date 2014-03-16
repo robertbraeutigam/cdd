@@ -9,7 +9,9 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.mathema.abersicher.SystemException;
 import de.mathema.abersicher.middleware.*;
 import de.mathema.abersicher.middleware.test.*;
+import de.mathema.abersicher.middleware.cashtransfer.*;
 import org.apache.wicket.Session;
+import java.math.BigDecimal;
 
 public class Dashboard extends WebPage {
 
@@ -38,6 +40,27 @@ public class Dashboard extends WebPage {
          public void onSubmit() {
             TestRequest request = new TestRequest();
             call(new TestMiddlewareService(), request);
+         }
+      });
+
+      BootstrapForm cashtransferForm = new BootstrapForm("cashtransferForm");
+      add(cashtransferForm);
+      cashtransferForm.add(new BootstrapButton("testException", Model.of("Negativer Betrag"), Buttons.Type.Danger) {
+         @Override
+         public void onSubmit() {
+            CashTransferMiddlewareRequest request = new CashTransferMiddlewareRequest();
+            request.setAmount(new BigDecimal("-12.34"));
+            request.setTargetAccount("DE751234567890123456");
+            call(new CashTransferMiddlewareService(), request);
+         }
+      });
+      cashtransferForm.add(new BootstrapButton("testMessages", Model.of("Normal"), Buttons.Type.Primary) {
+         @Override
+         public void onSubmit() {
+            CashTransferMiddlewareRequest request = new CashTransferMiddlewareRequest();
+            request.setAmount(new BigDecimal("12.34"));
+            request.setTargetAccount("DE751234567890123456");
+            call(new CashTransferMiddlewareService(), request);
          }
       });
    }
