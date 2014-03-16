@@ -1,7 +1,6 @@
 package de.mathema.abersicher.middleware.cashtransfer;
 
 import de.mathema.abersicher.middleware.MiddlewareService;
-import de.mathema.abersicher.middleware.MiddlewareMessage;
 import de.mathema.abersicher.SystemException;
 import de.mathema.abersicher.backend.cashtransfer.*;
 
@@ -13,7 +12,7 @@ public class CashTransferMiddlewareService implements MiddlewareService<CashTran
       CashTransferBackendRequest backendRequest = new CashTransferBackendRequest();
       backendRequest.setAmount(request.getAmount());
       backendRequest.setTargetAccount(request.getTargetAccount());
-      CashTransferBackendResponse backendResponse = new CashTransferBackendService().call(backendRequest);
+      new CashTransferBackendService().call(backendRequest);
 
       return response;
    }

@@ -25,7 +25,7 @@ public class Dashboard extends WebPage {
       navbar.brandName(Model.of("Aber Sicher!"));
       add(navbar);
 
-      BootstrapForm testForm = new BootstrapForm("testForm");
+      BootstrapForm<Void> testForm = new BootstrapForm<Void>("testForm");
       add(testForm);
       testForm.add(new BootstrapButton("testException", Model.of("Fehler"), Buttons.Type.Danger) {
          @Override
@@ -43,7 +43,7 @@ public class Dashboard extends WebPage {
          }
       });
 
-      BootstrapForm cashtransferForm = new BootstrapForm("cashtransferForm");
+      BootstrapForm<Void> cashtransferForm = new BootstrapForm<Void>("cashtransferForm");
       add(cashtransferForm);
       cashtransferForm.add(new BootstrapButton("testException", Model.of("Negativer Betrag"), Buttons.Type.Danger) {
          @Override
