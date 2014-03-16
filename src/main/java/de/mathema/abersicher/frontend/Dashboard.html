@@ -12,10 +12,25 @@
    <body>
       <div wicket:id="navbar"/>
       <div class="container">
+         <div wicket:id="feedback"/>
          <div class="jumbotron">
             <h1>Aber Sicher!</h1>
             <p>Bitte wählen Sie eine Funktion zum Ausführen. Jede Funktion ruft (mindestens) ein Backend-Service auf, und
             die Nachrichten erscheinen dann oben auf dieser Seite.</p>
+         </div>
+         <div class="row">
+            <div class="col-md-3">
+               <div class="panel panel-default">
+                  <div class="panel-heading">Test Service</div>
+                  <div class="panel-body">
+                     <p>Verursacht alle Arten von Nachrichten, zum Testen.</p>
+                     <form wicket:id="testForm" class="pull-right">
+                        <button wicket:id="testException"></button>
+                        <button wicket:id="testMessages"></button>
+                     </form>
+                  </div>
+               </div>
+            </div>
          </div>
       </div>
    </body>
