@@ -6,6 +6,7 @@ import org.apache.wicket.model.Model;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.BootstrapButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
+import de.mathema.abersicher.SystemException;
 import de.mathema.abersicher.middleware.*;
 import de.mathema.abersicher.middleware.test.*;
 import org.apache.wicket.Session;
@@ -59,7 +60,7 @@ public class Dashboard extends WebPage {
                   Session.get().info(message.getMessage());
             }
          }
-      } catch (MiddlewareException exception) {
+      } catch (SystemException exception) {
          Session.get().error(exception.getMessage());
       }
    }
