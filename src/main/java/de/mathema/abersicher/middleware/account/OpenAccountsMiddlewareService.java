@@ -7,11 +7,13 @@ import de.mathema.abersicher.backend.account.*;
 public class OpenAccountsMiddlewareService implements MiddlewareService<OpenAccountsMiddlewareRequest, OpenAccountsMiddlewareResponse> {
    @Override
    public OpenAccountsMiddlewareResponse call(OpenAccountsMiddlewareRequest request) throws SystemException {
-      OpenAccountsMiddlewareResponse response = new OpenAccountsMiddlewareResponse();
       CreateAccountsBackendRequest backendRequest = new CreateAccountsBackendRequest();
       backendRequest.setOwnerName(request.getOwnerName());
-      new CreateAccountsBackendService().call(backendRequest);
+      CreateAccountsBackendResponse backendResponse = new CreateAccountsBackendService().call(backendRequest);
 
+      OpenAccountsMiddlewareResponse response = new OpenAccountsMiddlewareResponse();
+      response.setClearingAccountNo(backendResponse.getClearingAccountNo());
+      response.setGiroAccountNo(backendResponse.getGiroAccountNo());
       return response;
    }
 }
