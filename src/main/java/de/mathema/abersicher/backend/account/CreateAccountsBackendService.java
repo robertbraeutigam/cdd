@@ -24,7 +24,7 @@ public class CreateAccountsBackendService implements BackendService<CreateAccoun
    private String createGiroAccount(String clearingAccountNo) {
       CreateGiroAccountBackendRequest giroRequest = new CreateGiroAccountBackendRequest();
       giroRequest.setClearingAccountNo(clearingAccountNo);
-      CreateGiroAccountBackendResponse giroResponse = new CreateGiroAccountBackendResponse();
+      CreateGiroAccountBackendResponse giroResponse = new CreateGiroAccountBackendService().call(giroRequest);
       return giroResponse.getAccountNo();
    }
 }
