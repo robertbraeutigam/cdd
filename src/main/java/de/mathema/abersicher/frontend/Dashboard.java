@@ -11,6 +11,7 @@ import de.mathema.abersicher.middleware.*;
 import de.mathema.abersicher.middleware.test.*;
 import de.mathema.abersicher.middleware.cashtransfer.*;
 import de.mathema.abersicher.middleware.directdebit.*;
+import de.mathema.abersicher.middleware.account.*;
 import org.apache.wicket.Session;
 import java.math.BigDecimal;
 
@@ -73,6 +74,17 @@ public class Dashboard extends WebPage {
             DirectDebitMiddlewareRequest request = new DirectDebitMiddlewareRequest();
             request.setTargetAccount("DE751234567890123456");
             call(new DirectDebitMiddlewareService(), request);
+         }
+      });
+
+      BootstrapForm<Void> accountForm = new BootstrapForm<Void>("accountForm");
+      add(accountForm);
+      accountForm.add(new BootstrapButton("testMessages", Model.of("Aufruf"), Buttons.Type.Primary) {
+         @Override
+         public void onSubmit() {
+            OpenAccountsMiddlewareRequest request = new OpenAccountsMiddlewareRequest();
+            request.setOwnerName("Owner Name");
+            call(new OpenAccountsMiddlewareService(), request);
          }
       });
    }
