@@ -7,13 +7,13 @@ import de.mathema.abersicher.backend.cashtransfer.*;
 public class CashTransferMiddlewareService implements MiddlewareService<CashTransferMiddlewareRequest, CashTransferMiddlewareResponse> {
    @Override
    public CashTransferMiddlewareResponse call(CashTransferMiddlewareRequest request) throws SystemException {
-      CashTransferMiddlewareResponse response = new CashTransferMiddlewareResponse();
-
       CashTransferBackendRequest backendRequest = new CashTransferBackendRequest();
       backendRequest.setAmount(request.getAmount());
       backendRequest.setTargetAccount(request.getTargetAccount());
-      new CashTransferBackendService().call(backendRequest);
+      CashTransferBackendResponse backendResponse = new CashTransferBackendService().call(backendRequest);
 
+      CashTransferMiddlewareResponse response = new CashTransferMiddlewareResponse();
+      response.setTransferId(backendResponse.getTransferId());
       return response;
    }
 }

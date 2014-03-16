@@ -12,6 +12,7 @@ public class CashTransferBackendService implements BackendService<CashTransferBa
       }
       CashTransferBackendResponse response = new CashTransferBackendResponse();
       response.addMessage(new BackendMessage("MSG1001", "Überweisung auf Konto "+request.getTargetAccount()+", mit Betrag "+request.getAmount()+" war entgegengenommen, wird am nächsten Arbeitstag ausgeführt"));
+      response.setTransferId("TX-1");
       return response;
    }
 }
