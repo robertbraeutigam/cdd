@@ -38,9 +38,11 @@ public class DirectDebitMiddlewareService implements MiddlewareService<DirectDeb
       DirectDebitBackendRequest directDebitCreateRequest = new DirectDebitBackendRequest();
       directDebitCreateRequest.setTargetAccount(request.getTargetAccount());
       directDebitCreateRequest.setMandateId(mandateId);
-      new DirectDebitBackendService().call(directDebitCreateRequest);
+      DirectDebitBackendResponse backendResponse = new DirectDebitBackendService().call(directDebitCreateRequest);
 
-      return new DirectDebitMiddlewareResponse();
+      DirectDebitMiddlewareResponse response = new DirectDebitMiddlewareResponse();
+      response.setTransferId(backendResponse.getTransferId());
+      return response;
    }
 }
 

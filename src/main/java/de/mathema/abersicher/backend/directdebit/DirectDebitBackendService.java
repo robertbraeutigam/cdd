@@ -8,6 +8,7 @@ public class DirectDebitBackendService implements BackendService<DirectDebitBack
    public DirectDebitBackendResponse call(DirectDebitBackendRequest request) {
       DirectDebitBackendResponse response = new DirectDebitBackendResponse();
       response.addMessage(new BackendMessage("MSG1002", "Lastschrift erfolgreich registriert auf das Konto: "+request.getTargetAccount()));
+      response.setTransferId("TX-2");
       return response;
    }
 }
