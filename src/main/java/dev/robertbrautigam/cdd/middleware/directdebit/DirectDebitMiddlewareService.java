@@ -23,15 +23,13 @@ public class DirectDebitMiddlewareService implements MiddlewareService<DirectDeb
    private String getMandateId(DirectDebitMiddlewareRequest request) throws SystemException {
       GetMandateBackendRequest mandateGetRequest = new GetMandateBackendRequest();
       mandateGetRequest.setTargetAccount(request.getTargetAccount());
-      GetMandateBackendResponse mandateGetResponse = new GetMandateBackendService().call(mandateGetRequest);
-      return mandateGetResponse.getMandateId();
+      return new GetMandateBackendService().call(mandateGetRequest).getMandateId();
    }
 
    private String createMandateId(DirectDebitMiddlewareRequest request) throws SystemException {
       CreateMandateBackendRequest mandateCreateRequest = new CreateMandateBackendRequest();
       mandateCreateRequest.setTargetAccount(request.getTargetAccount());
-      CreateMandateBackendResponse mandateCreateResponse = new CreateMandateBackendService().call(mandateCreateRequest);
-      return mandateCreateResponse.getMandateId();
+      return new CreateMandateBackendService().call(mandateCreateRequest).getMandateId();
    }
 
    private DirectDebitMiddlewareResponse createDirectDebit(DirectDebitMiddlewareRequest request, String mandateId) throws SystemException {
