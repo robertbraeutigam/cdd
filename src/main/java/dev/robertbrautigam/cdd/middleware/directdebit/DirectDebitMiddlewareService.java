@@ -9,7 +9,11 @@ public class DirectDebitMiddlewareService implements MiddlewareService<DirectDeb
    @Override
    public DirectDebitMiddlewareResponse call(DirectDebitMiddlewareRequest request) throws SystemException {
       String mandateId = getOrCreateMandateId(request);
-      return createDirectDebit(request, mandateId);
+      String transferId = createDirectDebit(request.getTargetAccount(), mandateId);
+
+      DirectDebitMiddlewareResponse response = new DirectDebitMiddlewareResponse();
+      response.setTransferId(transferId);
+      return response;
    }
 
    private String getOrCreateMandateId(DirectDebitMiddlewareRequest request) throws SystemException {
@@ -32,15 +36,11 @@ public class DirectDebitMiddlewareService implements MiddlewareService<DirectDeb
       return new CreateMandateBackendService().call(mandateCreateRequest).getMandateId();
    }
 
-   private DirectDebitMiddlewareResponse createDirectDebit(DirectDebitMiddlewareRequest request, String mandateId) throws SystemException {
+   private String createDirectDebit(String targetAccount, String mandateId) throws SystemException {
       DirectDebitBackendRequest directDebitCreateRequest = new DirectDebitBackendRequest();
-      directDebitCreateRequest.setTargetAccount(request.getTargetAccount());
+      directDebitCreateRequest.setTargetAccount(targetAccount);
       directDebitCreateRequest.setMandateId(mandateId);
-      DirectDebitBackendResponse backendResponse = new DirectDebitBackendService().call(directDebitCreateRequest);
-
-      DirectDebitMiddlewareResponse response = new DirectDebitMiddlewareResponse();
-      response.setTransferId(backendResponse.getTransferId());
-      return response;
+      return new DirectDebitBackendService().call(directDebitCreateRequest).getTransferId();
    }
 }
 
