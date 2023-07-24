@@ -4,9 +4,9 @@
       <meta charset="utf-8"/>
       <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <meta name="description" content="Aber Sicher!"/>
+      <meta name="description" content="Compiler Driven Development Example"/>
       <meta name="author" content="Robert Braeutigam"/>
-      <title>Aber Sicher!</title>
+      <title>Compiler Driven Development</title>
    </head>
 
    <body>
@@ -14,16 +14,16 @@
       <div class="container">
          <div wicket:id="feedback"/>
          <div class="jumbotron">
-            <h1>Aber Sicher!</h1>
-            <p>Bitte wählen Sie eine Funktion zum Ausführen. Jede Funktion ruft (mindestens) ein Backend-Service auf, und
-            die Nachrichten erscheinen dann oben auf dieser Seite.</p>
+            <h1>Compiler Driven Development</h1><p></p>
+            <p>Please choose a function to execute. Each function involves at least one backend
+            call and may produce messages that should appear on this page.</p>
          </div>
          <div class="row">
             <div class="col-md-3">
                <div class="panel panel-default">
                   <div class="panel-heading">Test Service</div>
                   <div class="panel-body">
-                     <p>Verursacht alle Arten von Nachrichten, zum Testen.</p>
+                     <p>This is just for testing the visibility of different messages.</p>
                      <form wicket:id="testForm" class="pull-right">
                         <button wicket:id="testException"></button>
                         <button wicket:id="testMessages"></button>
@@ -33,9 +33,9 @@
             </div>
             <div class="col-md-3">
                <div class="panel panel-default">
-                  <div class="panel-heading">Überweisung</div>
+                  <div class="panel-heading">Cash Transfer</div>
                   <div class="panel-body">
-                     <p>Einfacher Durchruf von Middleware auf Backend, Parameter werden durchgereicht.</p>
+                     <p>A simple proxy call to the backend to submit a pre-configured cash transfer.</p>
                      <form wicket:id="cashtransferForm" class="pull-right">
                         <button wicket:id="testException"></button>
                         <button wicket:id="testMessages"></button>
@@ -45,10 +45,10 @@
             </div>
             <div class="col-md-3">
                <div class="panel panel-default">
-                  <div class="panel-heading">Lastschrift</div>
+                  <div class="panel-heading">Direct Debit</div>
                   <div class="panel-body">
-                     <p>Lastschrift muss erstmals sicherstellen das ein Mandat existiert, dann kann der eigentliche
-                     Einzug erfolgen.</p>
+                     <p>A direct debit involves multiple backend calls, to establish a "Mandat" first
+                     and then submit the actual direct debit.</p>
                      <form wicket:id="directdebitForm" class="pull-right">
                         <button wicket:id="testMessages"></button>
                      </form>
@@ -57,10 +57,10 @@
             </div>
             <div class="col-md-3">
                <div class="panel panel-default">
-                  <div class="panel-heading">Konto</div>
+                  <div class="panel-heading">Create Account</div>
                   <div class="panel-body">
-                     <p>Ruft ein Backend Service der jedoch zwei andere beinhaltet. Einen zum Verrechnungskonto
-                     anlegen, und einer für GIRO Konto.
+                     <p>Opens two accounts on behalf of the user, this calls one "backend" service,
+                     which in turn makes two actual backend calls.</p>
                      <form wicket:id="accountForm" class="pull-right">
                         <button wicket:id="testMessages"></button>
                      </form>
