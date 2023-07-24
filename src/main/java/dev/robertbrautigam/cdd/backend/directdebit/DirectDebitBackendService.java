@@ -8,7 +8,7 @@ public class DirectDebitBackendService implements BackendService<DirectDebitBack
    @Override
    public DirectDebitBackendResponse call(DirectDebitBackendRequest request) throws SystemException {
       DirectDebitBackendResponse response = new DirectDebitBackendResponse();
-      response.addMessage(new BackendMessage("MSG1002", "Lastschrift erfolgreich registriert auf das Konto: "+request.getTargetAccount()));
+      response.addMessage(new BackendMessage("MSG1002", "Direct debit successfully submitted against account #"+request.getTargetAccount()));
       response.setTransferId("TX-2");
       return response;
    }

@@ -9,7 +9,7 @@ public class CreateClearingAccountBackendService implements BackendService<Creat
    public CreateClearingAccountBackendResponse call(CreateClearingAccountBackendRequest request) throws SystemException {
       CreateClearingAccountBackendResponse response = new CreateClearingAccountBackendResponse();
       response.setAccountNo("123456789");
-      response.addMessage(new BackendMessage("MSG1010", "Abrechnungskonto angelegt mit Kontonummer: 123456789"));
+      response.addMessage(new BackendMessage("MSG1010", "Billing account created with account #123456789"));
       return response;
    }
 }

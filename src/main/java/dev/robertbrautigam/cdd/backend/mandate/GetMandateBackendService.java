@@ -7,7 +7,7 @@ public class GetMandateBackendService implements BackendService<GetMandateBacken
    @Override
    public GetMandateBackendResponse call(GetMandateBackendRequest request) throws SystemException {
       GetMandateBackendResponse response = new GetMandateBackendResponse();
-      response.addMessage(new BackendMessage("MSG2055", "Mandat nicht gefunden für Konto: "+request.getTargetAccount()));
+      response.addMessage(new BackendMessage("MSG2055", "Mandate not found for account #"+request.getTargetAccount()));
       return response;
    }
 }

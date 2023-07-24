@@ -9,7 +9,7 @@ public class CreateGiroAccountBackendService implements BackendService<CreateGir
    public CreateGiroAccountBackendResponse call(CreateGiroAccountBackendRequest request) throws SystemException {
       CreateGiroAccountBackendResponse response = new CreateGiroAccountBackendResponse();
       response.setAccountNo("123456790");
-      response.addMessage(new BackendMessage("MSG1011", "GIRO Konto angelegt mit Kontonummer: 123456790 (Abrechnungskonto: "+request.getClearingAccountNo()+")"));
+      response.addMessage(new BackendMessage("MSG1011", "GIRO account created with account #123456790 (Billing account: #"+request.getClearingAccountNo()+")"));
       return response;
    }
 }

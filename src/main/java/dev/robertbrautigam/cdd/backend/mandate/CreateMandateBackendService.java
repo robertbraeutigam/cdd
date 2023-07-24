@@ -7,7 +7,7 @@ public class CreateMandateBackendService implements BackendService<CreateMandate
    @Override
    public CreateMandateBackendResponse call(CreateMandateBackendRequest request) throws SystemException {
       CreateMandateBackendResponse response = new CreateMandateBackendResponse();
-      response.addMessage(new BackendMessage("MSG1055", "Mandat angelegt für Konto: "+request.getTargetAccount()));
+      response.addMessage(new BackendMessage("MSG1055", "Mandate created for account #"+request.getTargetAccount()));
       response.setMandateId("Mandat-1123");
       return response;
    }

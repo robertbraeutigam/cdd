@@ -24,12 +24,12 @@ public class Dashboard extends WebPage {
       add(new FeedbackPanel("feedback"));
 
       Navbar navbar = new Navbar("navbar");
-      navbar.brandName(Model.of("Aber Sicher!"));
+      navbar.brandName(Model.of("Compiler Driven Development"));
       add(navbar);
 
-      BootstrapForm<Void> testForm = new BootstrapForm<Void>("testForm");
+      BootstrapForm<Void> testForm = new BootstrapForm<>("testForm");
       add(testForm);
-      testForm.add(new BootstrapButton("testException", Model.of("Fehler"), Buttons.Type.Danger) {
+      testForm.add(new BootstrapButton("testException", Model.of("Error"), Buttons.Type.Danger) {
          @Override
          public void onSubmit() {
             TestRequest request = new TestRequest();
@@ -37,7 +37,7 @@ public class Dashboard extends WebPage {
             call(new TestMiddlewareService(), request);
          }
       });
-      testForm.add(new BootstrapButton("testMessages", Model.of("Nachrichten"), Buttons.Type.Primary) {
+      testForm.add(new BootstrapButton("testMessages", Model.of("Messages"), Buttons.Type.Primary) {
          @Override
          public void onSubmit() {
             TestRequest request = new TestRequest();
@@ -45,9 +45,9 @@ public class Dashboard extends WebPage {
          }
       });
 
-      BootstrapForm<Void> cashtransferForm = new BootstrapForm<Void>("cashtransferForm");
+      BootstrapForm<Void> cashtransferForm = new BootstrapForm<>("cashtransferForm");
       add(cashtransferForm);
-      cashtransferForm.add(new BootstrapButton("testException", Model.of("Negativer Betrag"), Buttons.Type.Danger) {
+      cashtransferForm.add(new BootstrapButton("testException", Model.of("Negative amount."), Buttons.Type.Danger) {
          @Override
          public void onSubmit() {
             CashTransferMiddlewareRequest request = new CashTransferMiddlewareRequest();
@@ -66,9 +66,9 @@ public class Dashboard extends WebPage {
          }
       });
 
-      BootstrapForm<Void> directdebitForm = new BootstrapForm<Void>("directdebitForm");
+      BootstrapForm<Void> directdebitForm = new BootstrapForm<>("directdebitForm");
       add(directdebitForm);
-      directdebitForm.add(new BootstrapButton("testMessages", Model.of("Aufruf"), Buttons.Type.Primary) {
+      directdebitForm.add(new BootstrapButton("testMessages", Model.of("Call"), Buttons.Type.Primary) {
          @Override
          public void onSubmit() {
             DirectDebitMiddlewareRequest request = new DirectDebitMiddlewareRequest();
@@ -77,9 +77,9 @@ public class Dashboard extends WebPage {
          }
       });
 
-      BootstrapForm<Void> accountForm = new BootstrapForm<Void>("accountForm");
+      BootstrapForm<Void> accountForm = new BootstrapForm<>("accountForm");
       add(accountForm);
-      accountForm.add(new BootstrapButton("testMessages", Model.of("Aufruf"), Buttons.Type.Primary) {
+      accountForm.add(new BootstrapButton("testMessages", Model.of("Call"), Buttons.Type.Primary) {
          @Override
          public void onSubmit() {
             OpenAccountsMiddlewareRequest request = new OpenAccountsMiddlewareRequest();
