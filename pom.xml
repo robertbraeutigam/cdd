@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>de.mathema</groupId>
-  <artifactId>abersicher</artifactId>
+  <groupId>dev.robertbrautigam.ccd</groupId>
+  <artifactId>ccd-example</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <name>Aber Sicher!</name>
+  <name>Compiler Driven Development Example</name>
   <packaging>war</packaging>
 
   <properties>
