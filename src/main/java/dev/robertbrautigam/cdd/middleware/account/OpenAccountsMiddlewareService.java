@@ -7,14 +7,28 @@ import dev.robertbrautigam.cdd.backend.account.*;
 public class OpenAccountsMiddlewareService implements MiddlewareService<OpenAccountsMiddlewareRequest, OpenAccountsMiddlewareResponse> {
    @Override
    public OpenAccountsMiddlewareResponse call(OpenAccountsMiddlewareRequest request) throws SystemException {
-      CreateAccountsBackendRequest backendRequest = new CreateAccountsBackendRequest();
-      backendRequest.setOwnerName(request.getOwnerName());
-      CreateAccountsBackendResponse backendResponse = new CreateAccountsBackendService().call(backendRequest);
+      String clearingAccountNo = createClearingAccount(request.getOwnerName());
+      String giroAccountNo = createGiroAccount(clearingAccountNo);
 
       OpenAccountsMiddlewareResponse response = new OpenAccountsMiddlewareResponse();
-      response.setClearingAccountNo(backendResponse.getClearingAccountNo());
-      response.setGiroAccountNo(backendResponse.getGiroAccountNo());
+      response.setClearingAccountNo(clearingAccountNo);
+      response.setGiroAccountNo(giroAccountNo);
       return response;
    }
+
+    private String createClearingAccount(String ownerName) throws SystemException {
+        CreateClearingAccountBackendRequest clearingRequest = new CreateClearingAccountBackendRequest();
+        clearingRequest.setOwnerName(ownerName);
+        CreateClearingAccountBackendResponse clearingResponse = new CreateClearingAccountBackendService().call(clearingRequest);
+        return clearingResponse.getAccountNo();
+    }
+
+    private String createGiroAccount(String clearingAccountNo) throws SystemException {
+        CreateGiroAccountBackendRequest giroRequest = new CreateGiroAccountBackendRequest();
+        giroRequest.setClearingAccountNo(clearingAccountNo);
+        CreateGiroAccountBackendResponse giroResponse = new CreateGiroAccountBackendService().call(giroRequest);
+        return giroResponse.getAccountNo();
+    }
+
 }
 
