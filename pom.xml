@@ -10,7 +10,7 @@
 
   <properties>
      <wicket.version>6.13.0</wicket.version>
-     <wicket-bootstrap.version>0.10.0</wicket-bootstrap.version>
+     <wicket-bootstrap.version>0.9.3</wicket-bootstrap.version>
   </properties>
 
   <build>
