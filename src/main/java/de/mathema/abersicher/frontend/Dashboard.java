@@ -24,7 +24,7 @@ public class Dashboard extends WebPage {
       add(new FeedbackPanel("feedback"));
 
       Navbar navbar = new Navbar("navbar");
-      navbar.brandName(Model.of("Aber Sicher!"));
+      navbar.setBrandName(Model.of("Aber Sicher!"));
       add(navbar);
 
       BootstrapForm<Void> testForm = new BootstrapForm<Void>("testForm");
