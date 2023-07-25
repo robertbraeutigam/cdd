@@ -27,36 +27,9 @@ public class Dashboard extends WebPage {
       navbar.brandName(Model.of("Compiler Driven Development"));
       add(navbar);
 
-      BootstrapForm<Void> testForm = new BootstrapForm<>("testForm");
-      add(testForm);
-      testForm.add(new BootstrapButton("testException", Model.of("Error"), Buttons.Type.Danger) {
-         @Override
-         public void onSubmit() {
-            TestRequest request = new TestRequest();
-            request.setError(true);
-            call(new TestMiddlewareService(), request);
-         }
-      });
-      testForm.add(new BootstrapButton("testMessages", Model.of("Messages"), Buttons.Type.Primary) {
-         @Override
-         public void onSubmit() {
-            TestRequest request = new TestRequest();
-            call(new TestMiddlewareService(), request);
-         }
-      });
-
       BootstrapForm<Void> cashtransferForm = new BootstrapForm<>("cashtransferForm");
       add(cashtransferForm);
-      cashtransferForm.add(new BootstrapButton("testException", Model.of("Negative amount."), Buttons.Type.Danger) {
-         @Override
-         public void onSubmit() {
-            CashTransferMiddlewareRequest request = new CashTransferMiddlewareRequest();
-            request.setAmount(new BigDecimal("-12.34"));
-            request.setTargetAccount("DE751234567890123456");
-            call(new CashTransferMiddlewareService(), request);
-         }
-      });
-      cashtransferForm.add(new BootstrapButton("testMessages", Model.of("Normal"), Buttons.Type.Primary) {
+      cashtransferForm.add(new BootstrapButton("testMessages", Model.of("Call"), Buttons.Type.Primary) {
          @Override
          public void onSubmit() {
             CashTransferMiddlewareRequest request = new CashTransferMiddlewareRequest();
