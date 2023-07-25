@@ -19,15 +19,13 @@ public class OpenAccountsMiddlewareService implements MiddlewareService<OpenAcco
     private String createClearingAccount(String ownerName) throws SystemException {
         CreateClearingAccountBackendRequest clearingRequest = new CreateClearingAccountBackendRequest();
         clearingRequest.setOwnerName(ownerName);
-        CreateClearingAccountBackendResponse clearingResponse = new CreateClearingAccountBackendService().call(clearingRequest);
-        return clearingResponse.getAccountNo();
+        return new CreateClearingAccountBackendService().call(clearingRequest).getAccountNo();
     }
 
     private String createGiroAccount(String clearingAccountNo) throws SystemException {
         CreateGiroAccountBackendRequest giroRequest = new CreateGiroAccountBackendRequest();
         giroRequest.setClearingAccountNo(clearingAccountNo);
-        CreateGiroAccountBackendResponse giroResponse = new CreateGiroAccountBackendService().call(giroRequest);
-        return giroResponse.getAccountNo();
+        return new CreateGiroAccountBackendService().call(giroRequest).getAccountNo();
     }
 
 }
