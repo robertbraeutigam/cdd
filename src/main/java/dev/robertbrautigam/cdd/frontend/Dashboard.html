@@ -47,7 +47,7 @@
                <div class="panel panel-default">
                   <div class="panel-heading">Direct Debit</div>
                   <div class="panel-body">
-                     <p>A direct debit involves multiple backend calls, to establish a "Mandat" first
+                     <p>A direct debit involves multiple backend calls, to establish a "mandate" first
                      and then submit the actual direct debit.</p>
                      <form wicket:id="directdebitForm" class="pull-right">
                         <button wicket:id="testMessages"></button>
@@ -59,8 +59,8 @@
                <div class="panel panel-default">
                   <div class="panel-heading">Create Account</div>
                   <div class="panel-body">
-                     <p>Opens two accounts on behalf of the user, this calls one "backend" service,
-                     which in turn makes two actual backend calls.</p>
+                     <p>Open an account for the user. This needs to actually open two accounts,
+                     one for clearing and one GIRO.</p>
                      <form wicket:id="accountForm" class="pull-right">
                         <button wicket:id="testMessages"></button>
                      </form>
