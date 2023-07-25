@@ -11,7 +11,6 @@ public class OpenAccountsMiddlewareService implements MiddlewareService<OpenAcco
       String giroAccountNo = createGiroAccount(clearingAccountNo);
 
       OpenAccountsMiddlewareResponse response = new OpenAccountsMiddlewareResponse();
-      response.setClearingAccountNo(clearingAccountNo);
       response.setGiroAccountNo(giroAccountNo);
       return response;
    }
