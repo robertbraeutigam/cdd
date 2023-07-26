@@ -7,12 +7,16 @@ import dev.robertbrautigam.cdd.backend.account.*;
 public class OpenAccountsMiddlewareService implements MiddlewareService<OpenAccountsMiddlewareRequest, OpenAccountsMiddlewareResponse> {
    @Override
    public OpenAccountsMiddlewareResponse call(OpenAccountsMiddlewareRequest request) throws SystemException {
-      String clearingAccountNo = createClearingAccount(request.getOwnerName());
-      String giroAccountNo = createGiroAccount(clearingAccountNo);
+      String giroAccountNo = createAccounts(request.getOwnerName());
 
       OpenAccountsMiddlewareResponse response = new OpenAccountsMiddlewareResponse();
       response.setGiroAccountNo(giroAccountNo);
       return response;
+   }
+
+   private String createAccounts(String ownerName) throws SystemException {
+      String clearingAccountNo = createClearingAccount(ownerName);
+      return createGiroAccount(clearingAccountNo);
    }
 
     private String createClearingAccount(String ownerName) throws SystemException {
