@@ -21,4 +21,5 @@ The actual feature request for this example is: Thread through all the
 backend messages without changing the code structure so that they
 appear on the frontend.
 
-Remember, you have to change exactly one thing, and then just follow compiler errors!
+Remember, you have to change exactly one thing, and then just follow compiler errors! The solution given
+in the accompanying talk is in the *solution* branch.
