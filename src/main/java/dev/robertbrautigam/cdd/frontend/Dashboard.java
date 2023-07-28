@@ -9,7 +9,6 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import dev.robertbrautigam.cdd.SystemException;
 import dev.robertbrautigam.cdd.middleware.*;
 import dev.robertbrautigam.cdd.middleware.cashtransfer.*;
-import dev.robertbrautigam.cdd.middleware.directdebit.*;
 import dev.robertbrautigam.cdd.middleware.account.*;
 import org.apache.wicket.Session;
 import java.math.BigDecimal;
@@ -35,17 +34,6 @@ public class Dashboard extends WebPage {
             request.setAmount(new BigDecimal("12.34"));
             request.setTargetAccount("DE751234567890123456");
             call(new CashTransferMiddlewareService(), request);
-         }
-      });
-
-      BootstrapForm<Void> directdebitForm = new BootstrapForm<>("directdebitForm");
-      add(directdebitForm);
-      directdebitForm.add(new BootstrapButton("testMessages", Model.of("Call"), Buttons.Type.Primary) {
-         @Override
-         public void onSubmit() {
-            DirectDebitMiddlewareRequest request = new DirectDebitMiddlewareRequest();
-            request.setTargetAccount("DE751234567890123456");
-            call(new DirectDebitMiddlewareService(), request);
          }
       });
 
